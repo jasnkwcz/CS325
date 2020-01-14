@@ -19,7 +19,7 @@ int main () {
 
     srand(time(NULL));
 
-    float runtimeSum = 0;
+    float runtimeSum;
     float diff;
     float time;
     int size;
@@ -27,6 +27,13 @@ int main () {
     char response;
 
     do{
+
+        runtimeSum = 0;
+        diff = 0;
+        time = 0;
+        size = 0;
+        points = 0;
+
         std::cout << "Please enter the size of the array you'd like to sort: ";
         std::cin >> size;
         std::cout << "Please enter the number of data points you'd like to collect: ";
