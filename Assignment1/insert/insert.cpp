@@ -1,6 +1,8 @@
-// Example program
+//Joshua Sienkiewicz
+//CS325 - homework 1
+//Insertion Sort application
+
 #include <iostream>
-#include <string>
 #include <fstream>
 #include <cstdlib>
 

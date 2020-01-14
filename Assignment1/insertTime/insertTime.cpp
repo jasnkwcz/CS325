@@ -3,8 +3,6 @@
 //Insertion Sort application
 
 #include <iostream>
-#include <string>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 
@@ -18,15 +16,38 @@ int* makeArray(int length);
 
 
 int main () {
-    int num;
-    std::cout << "Please enter the size of the array you'd like to sort: ";
-    std::cin >> num;
-    int * arr = makeArray(num);
-    fillArray(arr, num);
-    clock_t start = clock();
-    insertionSort(arr, num);
-    clock_t end = clock() - start;
-    std::cout << "Execution time for array of size " << num << ": " << end << " ticks." << std::endl;
+
+    srand(time(NULL));
+
+    float runtimeSum = 0;
+    float diff;
+    float time;
+    int size;
+    int points;
+    char response;
+
+    do{
+        std::cout << "Please enter the size of the array you'd like to sort: ";
+        std::cin >> size;
+        std::cout << "Please enter the number of data points you'd like to collect: ";
+        std::cin >> points;
+
+        for (int i = 0; i < points; ++i) {
+            int * arr = makeArray(size);
+            fillArray(arr, size);
+            clock_t start = clock();
+            insertionSort(arr, size);
+            clock_t end = clock();
+            diff = end - start;
+            time = diff / CLOCKS_PER_SEC;
+            runtimeSum += time;
+        }
+
+        float avg = runtimeSum / points;
+        std::cout << "Average runtime for insertion sort on array of size " << size << " is: " << avg << " s. \n";
+        std::cout << "Run program again? y/n: ";
+        std::cin >> response;
+    } while (response == 'y');
     return 0;
 }
 
